@@ -44,3 +44,19 @@ logs/
 # Frontend delivery artifacts are built and qualified from source.
 /loopx/web/chat/
 /loopx/web/.chat-build-*/
+
+screenshots/
+
+*.log
+
+*.pid
+
+.agents/
+
+.agentsweb/
+
+.omgithub-runtime/
+
+.opencode-ssh/
+
+.opencode-web/

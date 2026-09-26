@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LoopX — Give your agents a goal. Keep the work moving.</title>
+<meta name="description" content="LoopX is the open, local-first control plane for long-horizon agents and personal agent teams.">
+<link rel="icon" href="data:,">
+<style>
+:root{--bg:#0b0e14;--panel:#131826;--line:#232c44;--text:#e8ecf4;--muted:#9aa6c2;--accent:#5b8cff;--accent2:#38d6a5;--warn:#ffb454}
+*{box-sizing:border-box}body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+a{color:var(--accent)}header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(11,14,20,.92);backdrop-filter:blur(8px);z-index:10}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.nav{display:flex;align-items:center;gap:14px;padding:14px 0;flex-wrap:wrap}.logo{font-weight:800;letter-spacing:.2px;font-size:20px;white-space:nowrap}.logo span{color:var(--accent2)}.badge{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--muted);white-space:nowrap;max-width:100%}
+.nav .sp{flex:1}.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:10px 16px;border-radius:10px;font-weight:650}.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--text)}
+.hero{padding:56px 0 28px;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:start}.hero>div{min-width:0}
+@media(max-width:860px){.hero{grid-template-columns:1fr;minmax:0 1fr;padding-top:36px}}
+h1{font-size:44px;line-height:1.08;margin:0 0 14px;overflow-wrap:break-word}@media(max-width:560px){h1{font-size:34px}}
+.sub{color:var(--muted);font-size:18px;margin:0 0 20px}.cta{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0;overflow:hidden}
+pre{background:#0a0d15;border:1px solid var(--line);border-radius:12px;padding:14px;overflow:auto;font-size:13.5px;color:#d7def0;max-width:100%}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.grid>div{min-width:0}@media(max-width:860px){.grid{grid-template-columns:1fr}}
+h2{font-size:24px;margin:34px 0 12px}h3{margin:0 0 8px;font-size:16px}p.muted{color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}
+.kbd{display:inline-block;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:0 7px;font-size:13px;background:#0d1220}
+.flow{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;white-space:pre;overflow:auto;max-width:100%}
+footer{border-top:1px solid var(--line);margin-top:36px;padding:22px 0 46px;color:var(--muted);font-size:14px;overflow-wrap:break-word}
+footer{border-top:1px solid var(--line);margin-top:36px;padding:22px 0 46px;color:var(--muted);font-size:14px}
+.tick{color:var(--accent2);font-weight:700}
+ul.tight{margin:8px 0;padding-left:20px}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<div class="logo">Loop<span>X</span></div>
+<div class="badge">open · local-first · Apache-2.0</div>
+<div class="sp"></div>
+<a class="btn ghost" href="https://loopx-project.github.io/loopx/docs/">Docs</a>
+<a class="btn" href="#try">Try LoopX</a>
+</div></header>
+<main class="wrap">
+<section class="hero">
+<div>
+<h1>Give your agents a goal. Keep the work moving.</h1>
+<p class="sub">The open, local-first control plane for long-horizon agents and personal agent teams. Your runtime provides the model and tools; LoopX keeps objective, gates, todos, evidence and quota durable across sessions.</p>
+<div class="cta">
+<a class="btn" href="#try">Get started</a>
+<a class="btn ghost" href="https://github.com/loopx-project/loopx">GitHub</a>
+<a class="btn ghost" href="https://loopx-project.github.io/loopx/benchmarks/lhtb/">LHTB results</a>
+</div>
+<div class="card">
+<h3>Core tick — five commands</h3>
+<pre><code>loopx quota should-run      # should this agent act now?
+loopx todo claim            # who owns this slice?
+loopx todo update           # what changed?
+loopx refresh-state         # what should the next turn see?
+loopx quota spend-slot      # account for a validated slice</code></pre>
+</div>
+</div>
+<div class="card">
+<h3>Live status preview</h3>
+<p class="muted">Static preview build. Connect the CLI in your project for live state.</p>
+<pre><code>$ loopx doctor
+✓ python 3.11+ · node 22+ · managed core
+
+$ loopx status
+objective: &lt;your long-running goal&gt;
+gate: concrete owner question (not "waiting")
+next todo: claimed slice + owner + lease</code></pre>
+<p class="muted">This page is the static deployment output served by <span class="kbd">start.sh</span> for browser preview and screenshots.</p>
+</div>
+</section>
+
+<h2 id="try">Try LoopX</h2>
+<div class="grid">
+<div class="card"><h3>1 · Install</h3><pre><code>python3 -m pip install --upgrade loopx
+loopx workflow-skills --install
+loopx doctor</code></pre><p class="muted">Python 3.11+ and Node.js 22.22.3+ required.</p></div>
+<div class="card"><h3>2 · Connect</h3><pre><code>cd /path/to/your-project
+loopx connect
+loopx status</code></pre><p class="muted">Reuses existing state; keeps <code>.loopx/</code> ignored.</p></div>
+<div class="card"><h3>3 · Start a goal</h3><pre><code>loopx start-goal --guided \
+  --project . \
+  --goal-text "Your objective"</code></pre><p class="muted">Guided path when state is missing.</p></div>
+</div>
+
+<h2>Why LoopX</h2>
+<div class="card"><div class="flow">objective / issue / project
+   │
+   ▼
+LoopX state: objective + gates + todos + scope + evidence + quota
+   │
+   ├─ human judgment needed? ── yes ─▶ ask a concrete question and wait
+   │
+   ├─ safe fallback available? ──────▶ run one bounded agent slice
+   │
+   ▼
+Codex / Claude Code / Cursor / shell agent executes one turn
+   │
+   ▼
+write evidence + handoff + next todo ─▶ quota decides the next tick</div></div>
+
+<h2>Evidence</h2>
+<div class="card">
+<h3>LHTB · 46 tasks · GPT-5.6 Sol</h3>
+<p class="muted"><span class="tick">0.4948 mean reward</span> — +17.3% vs Plain Codex, +10.6% vs native Codex Goal. Strict solves (≥0.95) match Plain Codex; gain includes partial progress.</p>
+<table><tr><th>Mode</th><th>Mean ↑</th><th>Strict ≥0.95</th><th>Pass ≥0.80</th></tr>
+<tr><td>Plain Codex</td><td>0.4218</td><td>7/46</td><td>12/46</td></tr>
+<tr><td>Native Codex Goal</td><td>0.4475</td><td>4/46</td><td>14/46</td></tr>
+<tr><td><strong>LoopX 1.0.3 Heartbeat</strong></td><td><strong>0.4948</strong></td><td><strong>7/46</strong></td><td><strong>15/46</strong></td></tr></table>
+</div>
+
+<h2>Control-plane surface</h2>
+<div class="grid">
+<div class="card"><h3>Goals &amp; status</h3><p class="muted">Active state, todos, claims, gates, evidence, run history.</p><p><code>loopx status</code> · <code>loopx diagnose</code></p></div>
+<div class="card"><h3>Quota</h3><p class="muted">Should-run, spend, scheduler hints, stop conditions.</p><p><code>loopx quota should-run</code></p></div>
+<div class="card"><h3>Operator</h3><p class="muted">Dashboard, session dash, Lark projection. Browser never owns state.</p><p><code>loopx dashboard</code> · <code>loopx dash</code></p></div>
+</div>
+
+<h2>Operate</h2>
+<div class="card"><pre><code>loopx status
+loopx history --goal-id your-project-goal
+loopx quota should-run --goal-id your-project-goal
+loopx check --scan-path README.md --scan-path docs/ --scan-path examples/</code></pre>
+<ul class="tight muted"><li>Automatic turns check quota first; spend only after validated writeback.</li><li>Peer agents claim before delivery and update after validation.</li><li>Local state (<code>.loopx/</code>, <code>.codex/goals/</code>, <code>.local/</code>) stays ignored.</li></ul></div>
+</main>
+<footer><div class="wrap">LoopX · Apache-2.0 · Source snapshot: <a href="https://github.com/loopx-project/loopx">loopx-project/loopx</a> · <a href="https://loopx-project.github.io/loopx/docs/">Docs portal</a> · Static preview: <code>index.html</code> served by <code>start.sh</code>.</div></footer>
+</body>
+</html>
